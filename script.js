@@ -8,7 +8,12 @@ $(document).ready(function() {
     var nowHour = moment().format('H');
 
     // create an empty array of size 9
-    var messageArray = new Array(9);
+    var messageArray;
+    if (JSON.parse(localStorage.getItem("messageArray"))) {
+        messageArray = JSON.parse(localStorage.getItem("messageArray"))
+    } else {
+        messageArray = new Array(9);
+    }
 
     // Use "for" loop to create rows representing business hours and columns representing each hour, event and save button
     for(var i=9; i <=17; i++){
@@ -69,7 +74,7 @@ $(document).ready(function() {
     }
 
     // getting "messageArray" from Local Storage
-    var messageArray = JSON.parse(localStorage.getItem("messageArray"));
+    // var messageArray = JSON.parse(localStorage.getItem("messageArray"));
 
     // Event listener for On click
     $(".buttonIcon").on("click",function(e){
